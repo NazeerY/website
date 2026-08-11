@@ -1,0 +1,3225 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Enthira Engineering Services | Enterprise PLM, CAD & Digital Engineering
+    </title>
+
+    <meta name="description"
+          content="Enthira Engineering Services provides enterprise PLM training, CAD engineering services, PLM consulting, upgrades, data migration, integrations and managed support.">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff8ff',
+                            100: '#dbeefe',
+                            400: '#38bdf8',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            900: '#0c4a6e'
+                        }
+                    },
+                    boxShadow: {
+                        glow: '0 0 40px rgba(14,165,233,.12)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 15% 10%, rgba(14,165,233,.06), transparent 28%),
+                radial-gradient(circle at 85% 20%, rgba(99,102,241,.05), transparent 25%),
+                #020617;
+        }
+
+        .glass-nav {
+            background: rgba(2, 6, 23, .82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(148,163,184,.10);
+        }
+
+        .hero-grid {
+            background-image:
+                linear-gradient(rgba(148,163,184,.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148,163,184,.045) 1px, transparent 1px);
+            background-size: 45px 45px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .service-card {
+            transition: all .35s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(56,189,248,.35);
+            box-shadow: 0 20px 60px rgba(0,0,0,.25);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .floating {
+            animation: floating 5s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%,100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .pulse-dot {
+            animation: pulseDot 2s infinite;
+        }
+
+        @keyframes pulseDot {
+            0%,100% {
+                box-shadow: 0 0 0 0 rgba(56,189,248,.35);
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(56,189,248,0);
+            }
+        }
+
+        .tab-active {
+            background: #0284c7 !important;
+            color: white !important;
+            border-color: #0284c7 !important;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .35s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 400px;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-icon {
+            transition: transform .3s ease;
+        }
+
+        .metric-number {
+            font-variant-numeric: tabular-nums;
+        }
+
+        ::selection {
+            background: #0284c7;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="text-slate-100 font-sans antialiased">
+
+<!-- ========================================================= -->
+<!-- NAVIGATION -->
+<!-- ========================================================= -->
+
+<header class="sticky top-0 z-50 glass-nav">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+        <a href="#home" class="flex items-center gap-3">
+
+            <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600
+                        flex items-center justify-center font-black text-xl shadow-lg shadow-sky-500/20">
+                E
+            </div>
+
+            <div>
+                <span class="block text-lg font-bold tracking-tight">
+                    ENTHIRA
+                </span>
+
+                <span class="block text-[9px] text-sky-400 uppercase tracking-[.25em]">
+                    Engineering Services
+                </span>
+            </div>
+
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-7 text-sm text-slate-300">
+
+            <a href="#services" class="hover:text-sky-400 transition">Services</a>
+            <a href="#platforms" class="hover:text-sky-400 transition">Technology</a>
+            <a href="#portfolio" class="hover:text-sky-400 transition">Projects</a>
+            <a href="#industries" class="hover:text-sky-400 transition">Industries</a>
+            <a href="#testimonials" class="hover:text-sky-400 transition">Testimonials</a>
+            <a href="#faq" class="hover:text-sky-400 transition">FAQ</a>
+
+        </nav>
+
+        <div class="flex items-center gap-3">
+
+            <a href="#contact"
+               class="hidden sm:flex px-5 py-2.5 rounded-lg bg-sky-400
+                      text-slate-950 text-sm font-bold
+                      hover:bg-sky-300 transition shadow-lg shadow-sky-400/20">
+                Talk to an Expert
+            </a>
+
+            <button id="mobile-menu-btn"
+                    class="lg:hidden p-2 text-slate-300 hover:text-white">
+                <i data-lucide="menu"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Mobile Menu -->
+
+    <div id="mobile-menu"
+         class="hidden lg:hidden border-t border-slate-800 bg-slate-950 px-5 py-5">
+
+        <div class="flex flex-col gap-4 text-sm">
+
+            <a href="#services" class="mobile-link">Services</a>
+            <a href="#platforms" class="mobile-link">Technology</a>
+            <a href="#portfolio" class="mobile-link">Projects</a>
+            <a href="#industries" class="mobile-link">Industries</a>
+            <a href="#testimonials" class="mobile-link">Testimonials</a>
+            <a href="#faq" class="mobile-link">FAQ</a>
+            <a href="#contact" class="text-sky-400 font-semibold mobile-link">
+                Request Proposal
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ========================================================= -->
+<!-- HERO -->
+<!-- ========================================================= -->
+
+<section id="home"
+         class="relative overflow-hidden border-b border-slate-800">
+
+    <div class="absolute inset-0 hero-grid"></div>
+
+    <div class="absolute top-0 left-1/2 -translate-x-1/2
+                w-[700px] h-[500px]
+                bg-sky-500/10 blur-[120px] rounded-full"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
+                pt-24 pb-24 lg:pt-32 lg:pb-32">
+
+        <div class="grid lg:grid-cols-12 gap-14 items-center">
+
+            <div class="lg:col-span-7 reveal">
+
+                <div class="inline-flex items-center gap-2 px-3 py-1.5
+                            rounded-full bg-sky-500/10
+                            border border-sky-500/20
+                            text-sky-400 text-xs font-semibold mb-7">
+
+                    <span class="w-2 h-2 rounded-full bg-sky-400 pulse-dot"></span>
+
+                    Enterprise PLM • CAD • Digital Engineering
+
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl
+                           font-black tracking-tight leading-[1.05]">
+
+                    Transforming Engineering
+                    <span class="gradient-text">
+                        Through PLM & Digital Engineering
+                    </span>
+
+                </h1>
+
+                <p class="mt-7 text-lg lg:text-xl text-slate-300
+                          leading-relaxed max-w-3xl">
+
+                    Enthira Engineering Services helps engineering organizations
+                    build stronger PLM capabilities through technical training,
+                    functional enablement, CAD engineering, platform modernization,
+                    data migration, enterprise integration and managed support.
+
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 mt-9">
+
+                    <a href="#contact"
+                       class="inline-flex items-center justify-center gap-2
+                              px-6 py-3.5 rounded-xl
+                              bg-sky-400 text-slate-950 font-bold
+                              hover:bg-sky-300 transition
+                              shadow-xl shadow-sky-400/20">
+
+                        Schedule Technical Discovery
+                        <i data-lucide="arrow-right" class="w-4"></i>
+
+                    </a>
+
+                    <a href="#services"
+                       class="inline-flex items-center justify-center gap-2
+                              px-6 py-3.5 rounded-xl
+                              bg-slate-900 border border-slate-700
+                              text-slate-200 font-semibold
+                              hover:border-sky-500/40 hover:bg-slate-800 transition">
+
+                        Explore Our Services
+                        <i data-lucide="layers" class="w-4"></i>
+
+                    </a>
+
+                </div>
+
+                <div class="flex flex-wrap gap-6 mt-10 text-xs text-slate-400">
+
+                    <span class="flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 text-emerald-400"></i>
+                        Enterprise-focused delivery
+                    </span>
+
+                    <span class="flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 text-emerald-400"></i>
+                        Hands-on technical expertise
+                    </span>
+
+                    <span class="flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 text-emerald-400"></i>
+                        Global delivery capability
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Hero visual -->
+
+            <div class="lg:col-span-5 reveal">
+
+                <div class="relative floating">
+
+                    <div class="absolute -inset-5
+                                bg-gradient-to-r from-sky-500/10 to-indigo-500/10
+                                blur-3xl"></div>
+
+                    <div class="relative bg-slate-900/90
+                                border border-slate-700
+                                rounded-3xl p-6 shadow-2xl">
+
+                        <div class="flex items-center justify-between mb-6">
+
+                            <div>
+                                <p class="text-xs text-slate-500 uppercase tracking-wider">
+                                    Engineering Capability
+                                </p>
+
+                                <h3 class="text-lg font-bold mt-1">
+                                    Digital Engineering Stack
+                                </h3>
+                            </div>
+
+                            <div class="w-10 h-10 rounded-xl
+                                        bg-sky-500/10
+                                        flex items-center justify-center">
+
+                                <i data-lucide="cpu" class="text-sky-400"></i>
+
+                            </div>
+
+                        </div>
+
+                        <div class="space-y-3">
+
+                            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                <div class="flex justify-between">
+                                    <span class="text-sm font-semibold">
+                                        PLM Platforms
+                                    </span>
+                                    <span class="text-sky-400 text-xs">
+                                        Core
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">
+                                    3DEXPERIENCE • ENOVIA • Teamcenter
+                                </p>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                <div class="flex justify-between">
+                                    <span class="text-sm font-semibold">
+                                        CAD / Engineering
+                                    </span>
+                                    <span class="text-indigo-400 text-xs">
+                                        Multi-CAD
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">
+                                    CATIA V5/V6 • DELMIA • SOLIDWORKS • NX • AutoCAD
+                                </p>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                <div class="flex justify-between">
+                                    <span class="text-sm font-semibold">
+                                        Enterprise Integration
+                                    </span>
+                                    <span class="text-emerald-400 text-xs">
+                                        Connected
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">
+                                    ERP • MES • APIs • Middleware • Data Platforms
+                                </p>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800">
+                                <div class="flex justify-between">
+                                    <span class="text-sm font-semibold">
+                                        Support
+                                    </span>
+                                    <span class="text-amber-400 text-xs">
+                                        L2 / L3
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">
+                                    Monitoring • Incident • Enhancement • Optimization
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Platform Strip -->
+
+        <div id="platforms"
+             class="mt-20 pt-8 border-t border-slate-800">
+
+            <p class="text-center text-xs uppercase tracking-[.2em]
+                      text-slate-500 mb-7">
+                Technology Ecosystem
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+
+                <div class="platform-box">3DEXPERIENCE</div>
+                <div class="platform-box">ENOVIA</div>
+                <div class="platform-box">Teamcenter</div>
+                <div class="platform-box">CATIA V5 / V6</div>
+                <div class="platform-box">DELMIA</div>
+                <div class="platform-box">SOLIDWORKS</div>
+                <div class="platform-box">Siemens NX</div>
+                <div class="platform-box">AutoCAD</div>
+                <div class="platform-box">Oracle ERP</div>
+                <div class="platform-box">SAP ERP</div>
+                <div class="platform-box">MES</div>
+                <div class="platform-box">Enterprise APIs</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- TRUST METRICS -->
+<!-- ========================================================= -->
+
+<section class="border-b border-slate-800 bg-slate-900/30">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+
+            <div class="reveal">
+                <div class="metric-number text-4xl font-black text-sky-400"
+                     data-target="20">
+                    0+
+                </div>
+                <p class="text-xs text-slate-400 uppercase tracking-wider mt-2">
+                    Corporate Training Batches
+                </p>
+            </div>
+
+            <div class="reveal">
+                <div class="metric-number text-4xl font-black text-indigo-400"
+                     data-target="1200">
+                    0+
+                </div>
+                <p class="text-xs text-slate-400 uppercase tracking-wider mt-2">
+                    Engineers & Developers Trained
+                </p>
+            </div>
+
+            <div class="reveal">
+                <div class="metric-number text-4xl font-black text-emerald-400"
+                     data-target="150">
+                    0+
+                </div>
+                <p class="text-xs text-slate-400 uppercase tracking-wider mt-2">
+                    PLM Projects / Engagements
+                </p>
+            </div>
+
+            <div class="reveal">
+                <div class="metric-number text-4xl font-black text-amber-400"
+                     data-target="30">
+                    0+
+                </div>
+                <p class="text-xs text-slate-400 uppercase tracking-wider mt-2">
+                    Countries / Global Reach
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- WHY ENTHIRA -->
+<!-- ========================================================= -->
+
+<section class="py-24 border-b border-slate-800">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+            <div class="reveal">
+
+                <span class="text-sky-400 text-xs font-semibold
+                             uppercase tracking-widest">
+                    Why Enthira
+                </span>
+
+                <h2 class="text-3xl lg:text-4xl font-black mt-3">
+                    Engineering expertise that connects
+                    <span class="gradient-text">people, process & technology.</span>
+                </h2>
+
+                <p class="text-slate-400 mt-5 leading-relaxed">
+                    Enterprise PLM success is not only about software.
+                    It requires the right combination of platform knowledge,
+                    engineering processes, technical capability, governance
+                    and people.
+                </p>
+
+                <div class="mt-8 space-y-5">
+
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/10
+                                    flex items-center justify-center shrink-0">
+                            <i data-lucide="brain-circuit"
+                               class="text-sky-400 w-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">Deep Technical Capability</h3>
+                            <p class="text-sm text-slate-500 mt-1">
+                                Developer-level and architect-level knowledge
+                                across PLM, CAD and enterprise integration.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10
+                                    flex items-center justify-center shrink-0">
+                            <i data-lucide="users"
+                               class="text-indigo-400 w-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">Knowledge Transfer</h3>
+                            <p class="text-sm text-slate-500 mt-1">
+                                Build internal capability instead of creating
+                                long-term dependency on external teams.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10
+                                    flex items-center justify-center shrink-0">
+                            <i data-lucide="workflow"
+                               class="text-emerald-400 w-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">Implementation-Oriented</h3>
+                            <p class="text-sm text-slate-500 mt-1">
+                                Training, consulting and support are aligned
+                                with real enterprise implementation scenarios.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="grid sm:grid-cols-2 gap-5 reveal">
+
+                <div class="bg-slate-900 border border-slate-800
+                            rounded-2xl p-6">
+                    <i data-lucide="graduation-cap"
+                       class="text-sky-400 mb-5"></i>
+
+                    <h3 class="font-bold text-lg">
+                        Learn
+                    </h3>
+
+                    <p class="text-sm text-slate-500 mt-2">
+                        Build PLM and CAD capability through structured
+                        technical and functional programs.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800
+                            rounded-2xl p-6">
+                    <i data-lucide="settings-2"
+                       class="text-indigo-400 mb-5"></i>
+
+                    <h3 class="font-bold text-lg">
+                        Implement
+                    </h3>
+
+                    <p class="text-sm text-slate-500 mt-2">
+                        Configure, customize and integrate enterprise
+                        engineering platforms.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800
+                            rounded-2xl p-6">
+                    <i data-lucide="database"
+                       class="text-emerald-400 mb-5"></i>
+
+                    <h3 class="font-bold text-lg">
+                        Modernize
+                    </h3>
+
+                    <p class="text-sm text-slate-500 mt-2">
+                        Upgrade platforms, migrate legacy data and improve
+                        system performance.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800
+                            rounded-2xl p-6">
+                    <i data-lucide="headphones"
+                       class="text-amber-400 mb-5"></i>
+
+                    <h3 class="font-bold text-lg">
+                        Sustain
+                    </h3>
+
+                    <p class="text-sm text-slate-500 mt-2">
+                        Provide L2/L3 support, monitoring and continuous
+                        engineering improvements.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- SERVICES -->
+<!-- ========================================================= -->
+
+<section id="services" class="py-24 bg-slate-900/30 border-b border-slate-800">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+
+            <span class="text-sky-400 text-xs font-semibold
+                         uppercase tracking-widest">
+                Our Services
+            </span>
+
+            <h2 class="text-3xl lg:text-4xl font-black mt-3">
+                From engineering capability to
+                <span class="gradient-text">enterprise transformation.</span>
+            </h2>
+
+            <p class="text-slate-400 mt-4">
+                Select a capability area to explore the depth of our
+                services and delivery approach.
+            </p>
+
+        </div>
+
+
+        <!-- Service Tabs -->
+
+        <div class="flex flex-wrap justify-center gap-2 mb-12">
+
+            <button class="service-tab tab-active px-4 py-2 rounded-lg
+                           border border-slate-700 text-xs font-semibold"
+                    data-service="training">
+                PLM Training
+            </button>
+
+            <button class="service-tab px-4 py-2 rounded-lg
+                           border border-slate-700 text-xs font-semibold"
+                    data-service="cad">
+                CAD & Digital Engineering
+            </button>
+
+            <button class="service-tab px-4 py-2 rounded-lg
+                           border border-slate-700 text-xs font-semibold"
+                    data-service="consulting">
+                PLM Consulting
+            </button>
+
+            <button class="service-tab px-4 py-2 rounded-lg
+                           border border-slate-700 text-xs font-semibold"
+                    data-service="migration">
+                Upgrade & Migration
+            </button>
+
+            <button class="service-tab px-4 py-2 rounded-lg
+                           border border-slate-700 text-xs font-semibold"
+                    data-service="integration">
+                Integration
+            </button>
+
+            <button class="service-tab px-4 py-2 rounded-lg
+                           border border-slate-700 text-xs font-semibold"
+                    data-service="support">
+                Managed Support
+            </button>
+
+        </div>
+
+
+        <!-- TRAINING -->
+
+        <div id="service-training" class="service-panel">
+
+            <div class="grid lg:grid-cols-3 gap-7">
+
+                <div class="lg:col-span-2 service-card
+                            bg-slate-900 border border-slate-800
+                            rounded-3xl p-8">
+
+                    <div class="flex items-start justify-between">
+
+                        <div>
+
+                            <div class="w-12 h-12 rounded-xl
+                                        bg-sky-500/10 flex items-center
+                                        justify-center mb-5">
+
+                                <i data-lucide="code-2"
+                                   class="text-sky-400"></i>
+
+                            </div>
+
+                            <span class="text-xs uppercase tracking-widest
+                                         text-sky-400">
+                                PLM Training & Enablement
+                            </span>
+
+                            <h3 class="text-2xl font-black mt-2">
+                                Technical Developer Training
+                            </h3>
+
+                        </div>
+
+                        <span class="hidden sm:block px-3 py-1 rounded-full
+                                     bg-sky-500/10 text-sky-400 text-[10px]
+                                     font-bold border border-sky-500/20">
+                            20+ Corporate Batches
+                        </span>
+
+                    </div>
+
+                    <p class="text-slate-400 mt-5 leading-relaxed">
+                        Practical, project-oriented developer training designed
+                        for engineers who need to customize, configure,
+                        integrate and troubleshoot enterprise PLM platforms.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4 mt-7">
+
+                        <div class="training-item">
+                            <strong>3DEXPERIENCE / ENOVIA</strong>
+                            <span>JPO • Java • MQL • Business Rules • APIs</span>
+                        </div>
+
+                        <div class="training-item">
+                            <strong>Teamcenter</strong>
+                            <span>ITK • BMIDE • SOA • Customization</span>
+                        </div>
+
+                        <div class="training-item">
+                            <strong>Development Practices</strong>
+                            <span>Debugging • Deployment • Extensions</span>
+                        </div>
+
+                        <div class="training-item">
+                            <strong>Integration</strong>
+                            <span>REST APIs • Middleware • ERP Interfaces</span>
+                        </div>
+
+                    </div>
+
+                    <div class="mt-7 pt-6 border-t border-slate-800">
+
+                        <h4 class="font-bold text-sm">
+                            Typical Participants
+                        </h4>
+
+                        <div class="flex flex-wrap gap-2 mt-3">
+
+                            <span class="tag">PLM Developers</span>
+                            <span class="tag">Application Engineers</span>
+                            <span class="tag">Technical Consultants</span>
+                            <span class="tag">PLM Administrators</span>
+                            <span class="tag">Implementation Partners</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="space-y-7">
+
+                    <div class="service-card bg-slate-900
+                                border border-slate-800 rounded-3xl p-7">
+
+                        <i data-lucide="graduation-cap"
+                           class="text-indigo-400"></i>
+
+                        <h3 class="font-bold text-lg mt-5">
+                            Functional PLM Bootcamps
+                        </h3>
+
+                        <p class="text-sm text-slate-500 mt-3">
+                            Product structures, EBOM/MBOM, lifecycle,
+                            release management, change processes,
+                            configuration and engineering workflows.
+                        </p>
+
+                        <a href="#contact"
+                           class="inline-flex items-center gap-2
+                                  text-sky-400 text-xs font-bold mt-5">
+                            Discuss Bootcamp
+                            <i data-lucide="arrow-right" class="w-3"></i>
+                        </a>
+
+                    </div>
+
+
+                    <div class="service-card bg-slate-900
+                                border border-slate-800 rounded-3xl p-7">
+
+                        <i data-lucide="users-round"
+                           class="text-emerald-400"></i>
+
+                        <h3 class="font-bold text-lg mt-5">
+                            Corporate Upskilling
+                        </h3>
+
+                        <p class="text-sm text-slate-500 mt-3">
+                            Customized training aligned with your
+                            organization's actual implementation,
+                            project roles and technology stack.
+                        </p>
+
+                        <a href="#contact"
+                           class="inline-flex items-center gap-2
+                                  text-sky-400 text-xs font-bold mt-5">
+                            Build Your Program
+                            <i data-lucide="arrow-right" class="w-3"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Training Proof -->
+
+            <div class="grid md:grid-cols-3 gap-5 mt-8">
+
+                <div class="proof-card">
+                    <span class="text-sky-400 text-xs font-bold">
+                        INDIVIDUAL DEVELOPER
+                    </span>
+                    <p>
+                        "The hands-on approach helped me understand the
+                        actual customization flow instead of simply learning
+                        product features."
+                    </p>
+                    <strong>PLM Developer</strong>
+                </div>
+
+                <div class="proof-card">
+                    <span class="text-indigo-400 text-xs font-bold">
+                        PLM MANAGER
+                    </span>
+                    <p>
+                        "The curriculum was much closer to our implementation
+                        requirements than generic classroom training."
+                    </p>
+                    <strong>PLM Engineering Manager</strong>
+                </div>
+
+                <div class="proof-card">
+                    <span class="text-emerald-400 text-xs font-bold">
+                        PROJECT LEAD
+                    </span>
+                    <p>
+                        "The biggest benefit was enabling our internal team
+                        to become more independent during implementation."
+                    </p>
+                    <strong>PLM Project Manager</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAD -->
+
+        <div id="service-cad" class="service-panel hidden">
+
+            <div class="grid lg:grid-cols-2 gap-7">
+
+                <div class="bg-slate-900 border border-slate-800
+                            rounded-3xl p-8">
+
+                    <span class="text-indigo-400 text-xs uppercase
+                                 tracking-widest font-bold">
+                        CAD & Digital Engineering
+                    </span>
+
+                    <h3 class="text-2xl font-black mt-2">
+                        Multi-CAD Engineering Capability
+                    </h3>
+
+                    <p class="text-slate-400 mt-4 leading-relaxed">
+                        Support engineering organizations across CAD authoring,
+                        product structures, CAD-PLM integration, data management,
+                        engineering workflows and digital manufacturing.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4 mt-7">
+
+                        <div class="cad-box">
+                            <b>CATIA V5</b>
+                            <span>Part Design • Assembly • Drafting • GSD</span>
+                        </div>
+
+                        <div class="cad-box">
+                            <b>CATIA V6 / 3DEXPERIENCE</b>
+                            <span>Native Apps • ENOVIA • Collaborative Design</span>
+                        </div>
+
+                        <div class="cad-box">
+                            <b>DELMIA</b>
+                            <span>Manufacturing • Process Planning • Robotics</span>
+                        </div>
+
+                        <div class="cad-box">
+                            <b>SOLIDWORKS</b>
+                            <span>Design • Assembly • Drawings • Data Management</span>
+                        </div>
+
+                        <div class="cad-box">
+                            <b>Siemens NX</b>
+                            <span>CAD • Product Structure • Engineering Data</span>
+                        </div>
+
+                        <div class="cad-box">
+                            <b>AutoCAD</b>
+                            <span>2D Design • Engineering Documentation</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="bg-slate-900 border border-slate-800
+                            rounded-3xl p-8">
+
+                    <span class="text-sky-400 text-xs uppercase
+                                 tracking-widest font-bold">
+                        Engineering Services
+                    </span>
+
+                    <h3 class="text-2xl font-black mt-2">
+                        Beyond CAD Authoring
+                    </h3>
+
+                    <div class="space-y-5 mt-7">
+
+                        <div class="flex gap-4">
+                            <i data-lucide="boxes"
+                               class="text-sky-400"></i>
+                            <div>
+                                <b>CAD / PLM Integration</b>
+                                <p class="text-xs text-slate-500 mt-1">
+                                    Connect engineering authoring environments
+                                    with PLM product structures and lifecycle.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <i data-lucide="database"
+                               class="text-indigo-400"></i>
+                            <div>
+                                <b>CAD Data Management</b>
+                                <p class="text-xs text-slate-500 mt-1">
+                                    Structure, classify, migrate and govern
+                                    engineering data.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <i data-lucide="factory"
+                               class="text-emerald-400"></i>
+                            <div>
+                                <b>Digital Manufacturing</b>
+                                <p class="text-xs text-slate-500 mt-1">
+                                    DELMIA and manufacturing engineering
+                                    workflow enablement.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <i data-lucide="repeat"
+                               class="text-amber-400"></i>
+                            <div>
+                                <b>Multi-CAD Transformation</b>
+                                <p class="text-xs text-slate-500 mt-1">
+                                    Standardize engineering processes across
+                                    heterogeneous CAD environments.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONSULTING -->
+
+        <div id="service-consulting" class="service-panel hidden">
+
+            <div class="grid lg:grid-cols-3 gap-7">
+
+                <div class="lg:col-span-2 bg-slate-900 border
+                            border-slate-800 rounded-3xl p-8">
+
+                    <span class="text-sky-400 text-xs uppercase
+                                 tracking-widest font-bold">
+                        PLM Consulting
+                    </span>
+
+                    <h3 class="text-2xl font-black mt-2">
+                        From PLM Assessment to Digital Thread Strategy
+                    </h3>
+
+                    <p class="text-slate-400 mt-4 leading-relaxed">
+                        Assess the current engineering landscape, identify
+                        process and technology gaps, and establish a practical
+                        roadmap for PLM modernization and digital transformation.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-5 mt-8">
+
+                        <div class="consult-card">
+                            <b>Current-State Assessment</b>
+                            <span>
+                                Applications, processes, integrations,
+                                data and infrastructure.
+                            </span>
+                        </div>
+
+                        <div class="consult-card">
+                            <b>PLM Architecture</b>
+                            <span>
+                                Platform, integration and information
+                                architecture planning.
+                            </span>
+                        </div>
+
+                        <div class="consult-card">
+                            <b>Process Transformation</b>
+                            <span>
+                                Engineering change, release, BOM and
+                                configuration processes.
+                            </span>
+                        </div>
+
+                        <div class="consult-card">
+                            <b>Digital Thread</b>
+                            <span>
+                                Connect engineering, manufacturing,
+                                quality and enterprise systems.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="bg-gradient-to-br from-sky-950
+                            to-indigo-950 border border-sky-900/50
+                            rounded-3xl p-8">
+
+                    <i data-lucide="compass"
+                       class="text-sky-400 w-8 h-8"></i>
+
+                    <h3 class="text-xl font-black mt-5">
+                        Need a PLM Health Check?
+                    </h3>
+
+                    <p class="text-sm text-slate-400 mt-3">
+                        Start with a structured assessment of your current
+                        platform, process and integration landscape.
+                    </p>
+
+                    <a href="#contact"
+                       class="block text-center mt-7 px-5 py-3
+                              rounded-xl bg-sky-400 text-slate-950
+                              font-bold text-sm hover:bg-sky-300">
+                        Request Assessment
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MIGRATION -->
+
+        <div id="service-migration" class="service-panel hidden">
+
+            <div class="grid lg:grid-cols-2 gap-7">
+
+                <div class="bg-slate-900 border border-slate-800
+                            rounded-3xl p-8">
+
+                    <span class="text-emerald-400 text-xs uppercase
+                                 tracking-widest font-bold">
+                        Upgrade & Data Migration
+                    </span>
+
+                    <h3 class="text-2xl font-black mt-2">
+                        Modernize Without Losing Engineering History
+                    </h3>
+
+                    <p class="text-slate-400 mt-4">
+                        Structured upgrade and migration services covering
+                        extraction, transformation, validation, reconciliation
+                        and production cutover.
+                    </p>
+
+                    <div class="mt-7 space-y-4">
+
+                        <div class="migration-step">
+                            <span>01</span>
+                            <div>
+                                <b>Discover</b>
+                                <p>Analyze legacy structures and dependencies.</p>
+                            </div>
+                        </div>
+
+                        <div class="migration-step">
+                            <span>02</span>
+                            <div>
+                                <b>Extract</b>
+                                <p>Securely extract engineering and PLM data.</p>
+                            </div>
+                        </div>
+
+                        <div class="migration-step">
+                            <span>03</span>
+                            <div>
+                                <b>Transform</b>
+                                <p>Map legacy structures into target models.</p>
+                            </div>
+                        </div>
+
+                        <div class="migration-step">
+                            <span>04</span>
+                            <div>
+                                <b>Validate</b>
+                                <p>Perform reconciliation and data integrity checks.</p>
+                            </div>
+                        </div>
+
+                        <div class="migration-step">
+                            <span>05</span>
+                            <div>
+                                <b>Cutover</b>
+                                <p>Execute controlled production transition.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="bg-slate-900 border border-slate-800
+                            rounded-3xl p-8">
+
+                    <h3 class="text-xl font-black">
+                        Migration Capabilities
+                    </h3>
+
+                    <div class="grid sm:grid-cols-2 gap-4 mt-6">
+
+                        <div class="migration-box">
+                            Legacy Data Extraction
+                        </div>
+
+                        <div class="migration-box">
+                            ETL Transformation
+                        </div>
+
+                        <div class="migration-box">
+                            Attribute Mapping
+                        </div>
+
+                        <div class="migration-box">
+                            Product Structure Migration
+                        </div>
+
+                        <div class="migration-box">
+                            Revision / Version Handling
+                        </div>
+
+                        <div class="migration-box">
+                            Validation & Reconciliation
+                        </div>
+
+                        <div class="migration-box">
+                            Delta Migration
+                        </div>
+
+                        <div class="migration-box">
+                            Production Cutover
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- INTEGRATION -->
+
+        <div id="service-integration" class="service-panel hidden">
+
+            <div class="bg-slate-900 border border-slate-800
+                        rounded-3xl p-8">
+
+                <span class="text-amber-400 text-xs uppercase
+                             tracking-widest font-bold">
+                    Enterprise Integration
+                </span>
+
+                <h3 class="text-2xl font-black mt-2">
+                    Connecting PLM with the Enterprise
+                </h3>
+
+                <p class="text-slate-400 mt-4 max-w-4xl">
+                    Integrate engineering data with ERP, MES and enterprise
+                    applications to create a connected digital thread.
+                </p>
+
+                <div class="grid md:grid-cols-4 gap-5 mt-8">
+
+                    <div class="integration-card">
+                        <i data-lucide="package"></i>
+                        <b>Item Master</b>
+                        <span>
+                            Engineering item creation, updates and lifecycle.
+                        </span>
+                    </div>
+
+                    <div class="integration-card">
+                        <i data-lucide="git-branch"></i>
+                        <b>Product Structure</b>
+                        <span>
+                            EBOM / MBOM and structure synchronization.
+                        </span>
+                    </div>
+
+                    <div class="integration-card">
+                        <i data-lucide="repeat-2"></i>
+                        <b>Change Integration</b>
+                        <span>
+                            Engineering changes and release information.
+                        </span>
+                    </div>
+
+                    <div class="integration-card">
+                        <i data-lucide="plug"></i>
+                        <b>API / Middleware</b>
+                        <span>
+                            REST APIs, middleware and enterprise connectivity.
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="mt-8 p-5 rounded-2xl bg-slate-950
+                            border border-slate-800">
+
+                    <div class="flex flex-wrap items-center
+                                justify-center gap-5 text-sm">
+
+                        <span class="font-bold text-sky-400">
+                            PLM
+                        </span>
+
+                        <i data-lucide="arrow-right"></i>
+
+                        <span>Middleware / API</span>
+
+                        <i data-lucide="arrow-right"></i>
+
+                        <span class="font-bold text-emerald-400">
+                            ERP
+                        </span>
+
+                        <i data-lucide="arrow-right"></i>
+
+                        <span class="font-bold text-amber-400">
+                            Manufacturing / MES
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SUPPORT -->
+
+        <div id="service-support" class="service-panel hidden">
+
+            <div class="grid lg:grid-cols-3 gap-7">
+
+                <div class="lg:col-span-2 bg-slate-900
+                            border border-slate-800 rounded-3xl p-8">
+
+                    <span class="text-amber-400 text-xs uppercase
+                                 tracking-widest font-bold">
+                        Managed PLM Support
+                    </span>
+
+                    <h3 class="text-2xl font-black mt-2">
+                        Keep Engineering Systems Reliable
+                    </h3>
+
+                    <p class="text-slate-400 mt-4">
+                        L2/L3 application support for enterprise PLM and CAD
+                        environments with structured incident management,
+                        monitoring, troubleshooting and continuous improvement.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4 mt-7">
+
+                        <div class="support-box">L2 / L3 Application Support</div>
+                        <div class="support-box">Incident Management</div>
+                        <div class="support-box">Performance Monitoring</div>
+                        <div class="support-box">Integration Monitoring</div>
+                        <div class="support-box">Production Issue Resolution</div>
+                        <div class="support-box">Enhancement Requests</div>
+                        <div class="support-box">Patch & Release Support</div>
+                        <div class="support-box">Knowledge Base Development</div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="bg-gradient-to-br from-amber-950
+                            to-slate-950 border border-amber-900/40
+                            rounded-3xl p-8">
+
+                    <i data-lucide="shield-check"
+                       class="text-amber-400 w-8 h-8"></i>
+
+                    <h3 class="text-xl font-black mt-5">
+                        Operational Confidence
+                    </h3>
+
+                    <p class="text-sm text-slate-400 mt-3">
+                        Give your internal engineering team access to
+                        experienced PLM application specialists.
+                    </p>
+
+                    <a href="#contact"
+                       class="block text-center mt-7 px-5 py-3
+                              rounded-xl bg-amber-400 text-slate-950
+                              font-bold text-sm hover:bg-amber-300">
+                        Discuss Support Model
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- DELIVERY METHODOLOGY -->
+<!-- ========================================================= -->
+
+<section class="py-24 border-b border-slate-800">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+
+            <span class="text-sky-400 text-xs font-semibold
+                         uppercase tracking-widest">
+                Delivery Methodology
+            </span>
+
+            <h2 class="text-3xl lg:text-4xl font-black mt-3">
+                Structured delivery.
+                <span class="gradient-text">Measurable outcomes.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="grid md:grid-cols-5 gap-5">
+
+            <div class="method-card">
+                <span>01</span>
+                <i data-lucide="search"></i>
+                <h3>Discover</h3>
+                <p>Understand goals, systems, users and constraints.</p>
+            </div>
+
+            <div class="method-card">
+                <span>02</span>
+                <i data-lucide="map"></i>
+                <h3>Assess</h3>
+                <p>Identify capability, process and technology gaps.</p>
+            </div>
+
+            <div class="method-card">
+                <span>03</span>
+                <i data-lucide="pencil-ruler"></i>
+                <h3>Design</h3>
+                <p>Define solution, curriculum or transformation roadmap.</p>
+            </div>
+
+            <div class="method-card">
+                <span>04</span>
+                <i data-lucide="rocket"></i>
+                <h3>Execute</h3>
+                <p>Implement through practical, controlled delivery.</p>
+            </div>
+
+            <div class="method-card">
+                <span>05</span>
+                <i data-lucide="trending-up"></i>
+                <h3>Improve</h3>
+                <p>Measure outcomes and continuously optimize.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- INDUSTRIES -->
+<!-- ========================================================= -->
+
+<section id="industries"
+         class="py-24 bg-slate-900/30 border-b border-slate-800">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+            <div class="reveal">
+
+                <span class="text-sky-400 text-xs font-semibold
+                             uppercase tracking-widest">
+                    Industry Expertise
+                </span>
+
+                <h2 class="text-3xl lg:text-4xl font-black mt-3">
+                    Engineering solutions built for
+                    <span class="gradient-text">
+                        complex industries.
+                    </span>
+                </h2>
+
+                <p class="text-slate-400 mt-5 leading-relaxed">
+                    Our approach is designed for organizations where product
+                    complexity, regulatory requirements, engineering change,
+                    manufacturing and enterprise systems must work together.
+                </p>
+
+            </div>
+
+
+            <div class="grid grid-cols-2 gap-4 reveal">
+
+                <div class="industry-card">
+                    <i data-lucide="plane"></i>
+                    <span>Aerospace & Defense</span>
+                </div>
+
+                <div class="industry-card">
+                    <i data-lucide="car"></i>
+                    <span>Automotive</span>
+                </div>
+
+                <div class="industry-card">
+                    <i data-lucide="factory"></i>
+                    <span>Industrial Manufacturing</span>
+                </div>
+
+                <div class="industry-card">
+                    <i data-lucide="heart-pulse"></i>
+                    <span>Medical Devices</span>
+                </div>
+
+                <div class="industry-card">
+                    <i data-lucide="ship"></i>
+                    <span>Marine & Shipbuilding</span>
+                </div>
+
+                <div class="industry-card">
+                    <i data-lucide="zap"></i>
+                    <span>Energy & Utilities</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- PORTFOLIO -->
+<!-- ========================================================= -->
+
+<section id="portfolio" class="py-24 border-b border-slate-800">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-3xl mx-auto mb-14">
+
+            <span class="text-sky-400 text-xs font-semibold
+                         uppercase tracking-widest">
+                Project Portfolio
+            </span>
+
+            <h2 class="text-3xl lg:text-4xl font-black mt-3">
+                Engineering transformation in action
+            </h2>
+
+            <p class="text-slate-400 mt-4">
+                Representative engagement areas demonstrating the type of
+                enterprise challenges Enthira can support.
+            </p>
+
+        </div>
+
+
+        <div class="grid lg:grid-cols-3 gap-7">
+
+            <article class="portfolio-card">
+
+                <div class="portfolio-label sky">
+                    AEROSPACE & DEFENSE
+                </div>
+
+                <h3>
+                    Enterprise PLM Upgrade & Data Migration
+                </h3>
+
+                <p>
+                    Structured migration of engineering data,
+                    product structures, lifecycle information and
+                    custom configurations into a modern PLM environment.
+                </p>
+
+                <div class="portfolio-outcome">
+                    <b>Outcome</b>
+                    <span>
+                        Controlled cutover, validated engineering data
+                        and improved platform readiness.
+                    </span>
+                </div>
+
+            </article>
+
+
+            <article class="portfolio-card">
+
+                <div class="portfolio-label indigo">
+                    AUTOMOTIVE
+                </div>
+
+                <h3>
+                    PLM–ERP Product Structure Integration
+                </h3>
+
+                <p>
+                    Connected engineering item and product structure
+                    information with enterprise ERP processes through
+                    middleware and APIs.
+                </p>
+
+                <div class="portfolio-outcome">
+                    <b>Outcome</b>
+                    <span>
+                        Reduced manual data entry and improved
+                        engineering-to-enterprise data consistency.
+                    </span>
+                </div>
+
+            </article>
+
+
+            <article class="portfolio-card">
+
+                <div class="portfolio-label emerald">
+                    ENGINEERING ORGANIZATION
+                </div>
+
+                <h3>
+                    Corporate PLM Developer Upskilling
+                </h3>
+
+                <p>
+                    Delivered structured technical training for PLM
+                    implementation and engineering teams using
+                    project-oriented exercises.
+                </p>
+
+                <div class="portfolio-outcome">
+                    <b>Outcome</b>
+                    <span>
+                        Increased internal technical capability and
+                        reduced dependency on external resources.
+                    </span>
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- TESTIMONIALS -->
+<!-- ========================================================= -->
+
+<section id="testimonials"
+         class="py-24 bg-slate-900/30 border-b border-slate-800">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-3xl mx-auto mb-14">
+
+            <span class="text-sky-400 text-xs font-semibold
+                         uppercase tracking-widest">
+                Customer Perspective
+            </span>
+
+            <h2 class="text-3xl lg:text-4xl font-black mt-3">
+                Trusted across the PLM lifecycle
+            </h2>
+
+            <p class="text-slate-400 mt-4">
+                From individual engineers to department leaders and
+                implementation teams.
+            </p>
+
+        </div>
+
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div class="testimonial-card">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "The training helped me understand not only the
+                    technology but also how it fits into an actual
+                    enterprise PLM implementation."
+                </p>
+
+                <div class="testimonial-person">
+                    <b>PLM Developer</b>
+                    <span>Individual Learner</span>
+                </div>
+
+            </div>
+
+
+            <div class="testimonial-card">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "The team was able to tailor the sessions around
+                    our implementation environment, which made the
+                    training immediately useful."
+                </p>
+
+                <div class="testimonial-person">
+                    <b>PLM Engineering Manager</b>
+                    <span>Corporate Training</span>
+                </div>
+
+            </div>
+
+
+            <div class="testimonial-card">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "Our objective was to build internal capability.
+                    The structured knowledge transfer helped our team
+                    become much more self-sufficient."
+                </p>
+
+                <div class="testimonial-person">
+                    <b>Head of Engineering</b>
+                    <span>Enterprise Organization</span>
+                </div>
+
+            </div>
+
+
+            <div class="testimonial-card">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "The practical focus and implementation experience
+                    made the engagement valuable for our project team."
+                </p>
+
+                <div class="testimonial-person">
+                    <b>PLM Project Manager</b>
+                    <span>Implementation Program</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="mt-10 text-center">
+
+            <p class="text-xs text-slate-600">
+                *Replace representative testimonials with verified
+                customer references before public publication.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- ENGAGEMENT MODELS -->
+<!-- ========================================================= -->
+
+<section class="py-24 border-b border-slate-800">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-3xl mx-auto mb-14">
+
+            <span class="text-sky-400 text-xs font-semibold
+                         uppercase tracking-widest">
+                Engagement Models
+            </span>
+
+            <h2 class="text-3xl lg:text-4xl font-black mt-3">
+                Work with us the way your organization needs
+            </h2>
+
+        </div>
+
+
+        <div class="grid md:grid-cols-3 gap-7">
+
+            <div class="engagement-card">
+
+                <div class="w-12 h-12 rounded-xl bg-sky-500/10
+                            flex items-center justify-center">
+                    <i data-lucide="presentation"
+                       class="text-sky-400"></i>
+                </div>
+
+                <h3>Training & Enablement</h3>
+
+                <p>
+                    Instructor-led corporate training, bootcamps,
+                    workshops and role-based technical programs.
+                </p>
+
+                <a href="#contact">Discuss Training →</a>
+
+            </div>
+
+
+            <div class="engagement-card featured">
+
+                <div class="absolute top-5 right-5 px-2 py-1
+                            rounded-full bg-sky-500/10 text-sky-400
+                            text-[9px] font-bold">
+                    POPULAR
+                </div>
+
+                <div class="w-12 h-12 rounded-xl bg-indigo-500/10
+                            flex items-center justify-center">
+                    <i data-lucide="briefcase-business"
+                       class="text-indigo-400"></i>
+                </div>
+
+                <h3>Project Consulting</h3>
+
+                <p>
+                    Dedicated specialists for implementation,
+                    customization, migration, integration and
+                    transformation initiatives.
+                </p>
+
+                <a href="#contact">Discuss Consulting →</a>
+
+            </div>
+
+
+            <div class="engagement-card">
+
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/10
+                            flex items-center justify-center">
+                    <i data-lucide="headphones"
+                       class="text-emerald-400"></i>
+                </div>
+
+                <h3>Managed Services</h3>
+
+                <p>
+                    Flexible L2/L3 support and continuous improvement
+                    services for production PLM environments.
+                </p>
+
+                <a href="#contact">Discuss Support →</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- FAQ -->
+<!-- ========================================================= -->
+
+<section id="faq"
+         class="py-24 bg-slate-900/30 border-b border-slate-800">
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-12">
+
+            <span class="text-sky-400 text-xs font-semibold
+                         uppercase tracking-widest">
+                Frequently Asked Questions
+            </span>
+
+            <h2 class="text-3xl lg:text-4xl font-black mt-3">
+                Questions customers often ask
+            </h2>
+
+        </div>
+
+
+        <div class="space-y-3">
+
+            <div class="faq-item bg-slate-900 border border-slate-800 rounded-xl">
+
+                <button class="faq-question w-full p-5 flex items-center
+                               justify-between text-left">
+
+                    <span class="font-semibold text-sm">
+                        Can Enthira customize training for our project?
+                    </span>
+
+                    <i data-lucide="plus"
+                       class="faq-icon w-5 text-sky-400"></i>
+
+                </button>
+
+                <div class="faq-answer px-5">
+
+                    <p class="text-sm text-slate-400 pb-5 leading-relaxed">
+                        Yes. Corporate programs can be aligned with your
+                        implementation scope, platform version, user roles,
+                        development standards and actual project scenarios.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="faq-item bg-slate-900 border border-slate-800 rounded-xl">
+
+                <button class="faq-question w-full p-5 flex items-center
+                               justify-between text-left">
+
+                    <span class="font-semibold text-sm">
+                        Do you support both functional and technical PLM teams?
+                    </span>
+
+                    <i data-lucide="plus"
+                       class="faq-icon w-5 text-sky-400"></i>
+
+                </button>
+
+                <div class="faq-answer px-5">
+
+                    <p class="text-sm text-slate-400 pb-5 leading-relaxed">
+                        Yes. Programs can be designed for functional users,
+                        developers, administrators, architects, engineering
+                        managers and implementation teams.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="faq-item bg-slate-900 border border-slate-800 rounded-xl">
+
+                <button class="faq-question w-full p-5 flex items-center
+                               justify-between text-left">
+
+                    <span class="font-semibold text-sm">
+                        Can you support CAD and PLM integration projects?
+                    </span>
+
+                    <i data-lucide="plus"
+                       class="faq-icon w-5 text-sky-400"></i>
+
+                </button>
+
+                <div class="faq-answer px-5">
+
+                    <p class="text-sm text-slate-400 pb-5 leading-relaxed">
+                        Yes. Our engineering capability covers CATIA V5,
+                        CATIA V6 / 3DEXPERIENCE, DELMIA, SOLIDWORKS,
+                        Siemens NX, AutoCAD and related PLM workflows.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="faq-item bg-slate-900 border border-slate-800 rounded-xl">
+
+                <button class="faq-question w-full p-5 flex items-center
+                               justify-between text-left">
+
+                    <span class="font-semibold text-sm">
+                        Do you provide post-go-live support?
+                    </span>
+
+                    <i data-lucide="plus"
+                       class="faq-icon w-5 text-sky-400"></i>
+
+                </button>
+
+                <div class="faq-answer px-5">
+
+                    <p class="text-sm text-slate-400 pb-5 leading-relaxed">
+                        Yes. Managed L2/L3 support can include incident
+                        resolution, monitoring, troubleshooting, enhancements,
+                        integrations and continuous improvement.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="faq-item bg-slate-900 border border-slate-800 rounded-xl">
+
+                <button class="faq-question w-full p-5 flex items-center
+                               justify-between text-left">
+
+                    <span class="font-semibold text-sm">
+                        Can Enthira perform a PLM assessment before a project?
+                    </span>
+
+                    <i data-lucide="plus"
+                       class="faq-icon w-5 text-sky-400"></i>
+
+                </button>
+
+                <div class="faq-answer px-5">
+
+                    <p class="text-sm text-slate-400 pb-5 leading-relaxed">
+                        Yes. A discovery and assessment engagement can be used
+                        to understand your current architecture, processes,
+                        integrations, data landscape and transformation goals.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- CONTACT -->
+<!-- ========================================================= -->
+
+<section id="contact" class="py-24">
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="grid lg:grid-cols-5 gap-10">
+
+            <div class="lg:col-span-2 reveal">
+
+                <span class="text-sky-400 text-xs font-semibold
+                             uppercase tracking-widest">
+                    Start a Conversation
+                </span>
+
+                <h2 class="text-3xl lg:text-4xl font-black mt-3">
+                    Let's solve your
+                    <span class="gradient-text">
+                        engineering challenge.
+                    </span>
+                </h2>
+
+                <p class="text-slate-400 mt-5 leading-relaxed">
+                    Tell us about your PLM, CAD, migration, integration,
+                    training or support requirement. Our team can help
+                    define the appropriate engagement model.
+                </p>
+
+                <div class="mt-8 space-y-5">
+
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/10
+                                    flex items-center justify-center">
+                            <i data-lucide="search"
+                               class="text-sky-400"></i>
+                        </div>
+                        <div>
+                            <b class="text-sm">Technical Discovery</b>
+                            <p class="text-xs text-slate-500 mt-1">
+                                Understand your current landscape.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10
+                                    flex items-center justify-center">
+                            <i data-lucide="file-text"
+                               class="text-indigo-400"></i>
+                        </div>
+                        <div>
+                            <b class="text-sm">Solution Proposal</b>
+                            <p class="text-xs text-slate-500 mt-1">
+                                Define scope, approach and delivery.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10
+                                    flex items-center justify-center">
+                            <i data-lucide="rocket"
+                               class="text-emerald-400"></i>
+                        </div>
+                        <div>
+                            <b class="text-sm">Execution</b>
+                            <p class="text-xs text-slate-500 mt-1">
+                                Deliver measurable engineering outcomes.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="lg:col-span-3">
+
+                <div class="bg-slate-900 border border-slate-800
+                            rounded-3xl p-7 sm:p-9 shadow-2xl">
+
+                    <div id="form-container">
+
+                        <form id="proposal-form" class="space-y-5">
+
+                            <div class="grid sm:grid-cols-2 gap-5">
+
+                                <div>
+                                    <label class="form-label">
+                                        Full Name *
+                                    </label>
+
+                                    <input required
+                                           type="text"
+                                           class="form-input"
+                                           placeholder="Your name">
+                                </div>
+
+                                <div>
+                                    <label class="form-label">
+                                        Work Email *
+                                    </label>
+
+                                    <input required
+                                           type="email"
+                                           class="form-input"
+                                           placeholder="name@company.com">
+                                </div>
+
+                            </div>
+
+
+                            <div class="grid sm:grid-cols-2 gap-5">
+
+                                <div>
+                                    <label class="form-label">
+                                        Organization
+                                    </label>
+
+                                    <input type="text"
+                                           class="form-input"
+                                           placeholder="Company name">
+                                </div>
+
+                                <div>
+                                    <label class="form-label">
+                                        Your Role
+                                    </label>
+
+                                    <select class="form-input">
+
+                                        <option>PLM Developer</option>
+                                        <option>Engineer</option>
+                                        <option>PLM Manager</option>
+                                        <option>Project Manager</option>
+                                        <option>Head of Department</option>
+                                        <option>IT / Enterprise Architect</option>
+                                        <option>Business / Procurement</option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="grid sm:grid-cols-2 gap-5">
+
+                                <div>
+
+                                    <label class="form-label">
+                                        Service Required
+                                    </label>
+
+                                    <select class="form-input">
+
+                                        <option>PLM Developer Training</option>
+                                        <option>Functional PLM Training</option>
+                                        <option>CAD / Engineering Services</option>
+                                        <option>PLM Consulting</option>
+                                        <option>Upgrade / Data Migration</option>
+                                        <option>PLM–ERP Integration</option>
+                                        <option>Managed Support</option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div>
+
+                                    <label class="form-label">
+                                        Primary Platform
+                                    </label>
+
+                                    <select class="form-input">
+
+                                        <option>3DEXPERIENCE / ENOVIA</option>
+                                        <option>Teamcenter</option>
+                                        <option>CATIA V5</option>
+                                        <option>CATIA V6 / 3DEXPERIENCE</option>
+                                        <option>DELMIA</option>
+                                        <option>SOLIDWORKS</option>
+                                        <option>Siemens NX</option>
+                                        <option>AutoCAD</option>
+                                        <option>Multi-Platform</option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <div>
+
+                                <label class="form-label">
+                                    Project Scope / Requirement *
+                                </label>
+
+                                <textarea required
+                                          rows="5"
+                                          class="form-input resize-none"
+                                          placeholder="Tell us about your current platform, number of users, project objectives, training requirements, integration scope or challenges..."></textarea>
+
+                            </div>
+
+
+                            <button type="submit"
+                                    class="w-full py-4 rounded-xl
+                                           bg-sky-400 text-slate-950
+                                           font-black
+                                           hover:bg-sky-300 transition
+                                           shadow-lg shadow-sky-400/20">
+
+                                Request Custom Proposal
+
+                            </button>
+
+                            <p class="text-[10px] text-center text-slate-600">
+                                Your information will be used only to respond
+                                to your enquiry.
+                            </p>
+
+                        </form>
+
+                    </div>
+
+
+                    <div id="form-success"
+                         class="hidden text-center py-12">
+
+                        <div class="w-16 h-16 rounded-full
+                                    bg-emerald-500/10
+                                    flex items-center justify-center
+                                    mx-auto">
+
+                            <i data-lucide="check"
+                               class="text-emerald-400 w-8"></i>
+
+                        </div>
+
+                        <h3 class="text-2xl font-black mt-5">
+                            Request Received
+                        </h3>
+
+                        <p class="text-sm text-slate-400 mt-2">
+                            Thank you. Your enquiry has been captured.
+                            An Enthira representative can review your
+                            requirement and follow up with the next steps.
+                        </p>
+
+                        <button onclick="location.reload()"
+                                class="mt-6 text-sky-400 text-sm font-bold">
+                            Submit another enquiry
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<footer class="border-t border-slate-800 bg-slate-950">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <div class="grid md:grid-cols-4 gap-10">
+
+            <div class="md:col-span-2">
+
+                <div class="flex items-center gap-3">
+
+                    <div class="w-10 h-10 rounded-xl
+                                bg-gradient-to-tr from-sky-500 to-indigo-600
+                                flex items-center justify-center
+                                font-black">
+                        E
+                    </div>
+
+                    <div>
+                        <b class="block">
+                            ENTHIRA
+                        </b>
+
+                        <span class="text-[9px] text-sky-400
+                                     tracking-[.25em] uppercase">
+                            Engineering Services
+                        </span>
+                    </div>
+
+                </div>
+
+                <p class="text-sm text-slate-500 mt-5 max-w-md leading-relaxed">
+                    Enterprise PLM, CAD and digital engineering services
+                    focused on technical capability, transformation,
+                    integration and long-term engineering success.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="text-xs uppercase tracking-widest
+                           text-slate-400 font-bold">
+                    Services
+                </h4>
+
+                <div class="space-y-3 mt-5 text-sm text-slate-500">
+
+                    <a href="#services" class="block hover:text-sky-400">
+                        PLM Training
+                    </a>
+
+                    <a href="#services" class="block hover:text-sky-400">
+                        CAD Engineering
+                    </a>
+
+                    <a href="#services" class="block hover:text-sky-400">
+                        PLM Consulting
+                    </a>
+
+                    <a href="#services" class="block hover:text-sky-400">
+                        Migration & Upgrade
+                    </a>
+
+                    <a href="#services" class="block hover:text-sky-400">
+                        Integration
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="text-xs uppercase tracking-widest
+                           text-slate-400 font-bold">
+                    Company
+                </h4>
+
+                <div class="space-y-3 mt-5 text-sm text-slate-500">
+
+                    <a href="#industries" class="block hover:text-sky-400">
+                        Industries
+                    </a>
+
+                    <a href="#portfolio" class="block hover:text-sky-400">
+                        Project Portfolio
+                    </a>
+
+                    <a href="#testimonials" class="block hover:text-sky-400">
+                        Customer Experience
+                    </a>
+
+                    <a href="#contact" class="block hover:text-sky-400">
+                        Contact
+                    </a>
+
+                    <a href="https://www.enthira.co.in/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="block hover:text-sky-400">
+                        Official Enthira Portal
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="border-t border-slate-800 mt-10 pt-7
+                    flex flex-col sm:flex-row
+                    justify-between gap-4">
+
+            <p class="text-xs text-slate-600">
+                © 2026 Enthira Engineering Services Private Limited.
+                All rights reserved.
+            </p>
+
+            <p class="text-xs text-slate-600">
+                PLM • CAD • Digital Engineering • Enterprise Integration
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ========================================================= -->
+<!-- BACK TO TOP -->
+<!-- ========================================================= -->
+
+<button id="back-to-top"
+        class="fixed bottom-6 right-6 z-40
+               hidden w-11 h-11 rounded-full
+               bg-sky-400 text-slate-950
+               items-center justify-center
+               shadow-xl shadow-sky-400/20
+               hover:bg-sky-300 transition">
+
+    <i data-lucide="arrow-up" class="w-5"></i>
+
+</button>
+
+
+<!-- ========================================================= -->
+<!-- COMPONENT STYLES -->
+<!-- ========================================================= -->
+
+<style>
+
+    .platform-box {
+        padding: 14px 10px;
+        text-align: center;
+        border: 1px solid rgb(30 41 59);
+        background: rgba(15,23,42,.55);
+        border-radius: 10px;
+        font-size: 11px;
+        font-weight: 700;
+        color: rgb(148 163 184);
+        transition: .25s;
+    }
+
+    .platform-box:hover {
+        color: rgb(56 189 248);
+        border-color: rgba(56,189,248,.3);
+        transform: translateY(-2px);
+    }
+
+    .training-item,
+    .cad-box,
+    .consult-card,
+    .support-box,
+    .migration-box {
+        padding: 15px;
+        border: 1px solid rgb(30 41 59);
+        border-radius: 12px;
+        background: rgba(2,6,23,.55);
+    }
+
+    .training-item strong,
+    .cad-box b,
+    .consult-card b {
+        display: block;
+        font-size: 12px;
+        color: white;
+    }
+
+    .training-item span,
+    .cad-box span,
+    .consult-card span {
+        display: block;
+        margin-top: 5px;
+        font-size: 11px;
+        line-height: 1.6;
+        color: rgb(100 116 139);
+    }
+
+    .tag {
+        padding: 5px 9px;
+        border-radius: 999px;
+        border: 1px solid rgb(51 65 85);
+        color: rgb(148 163 184);
+        background: rgb(15 23 42);
+        font-size: 10px;
+    }
+
+    .proof-card {
+        padding: 22px;
+        border: 1px solid rgb(30 41 59);
+        border-radius: 18px;
+        background: rgb(15 23 42);
+    }
+
+    .proof-card p {
+        color: rgb(148 163 184);
+        font-size: 13px;
+        line-height: 1.7;
+        margin: 10px 0 18px;
+        font-style: italic;
+    }
+
+    .proof-card strong {
+        font-size: 11px;
+        color: white;
+    }
+
+    .migration-step {
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .migration-step > span {
+        min-width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(16,185,129,.1);
+        color: rgb(52 211 153);
+        font-size: 10px;
+        font-weight: 800;
+    }
+
+    .migration-step b {
+        font-size: 13px;
+    }
+
+    .migration-step p {
+        font-size: 11px;
+        color: rgb(100 116 139);
+        margin-top: 3px;
+    }
+
+    .migration-box {
+        font-size: 11px;
+        font-weight: 600;
+        color: rgb(148 163 184);
+    }
+
+    .integration-card {
+        padding: 22px;
+        border: 1px solid rgb(30 41 59);
+        border-radius: 16px;
+        background: rgb(2 6 23);
+    }
+
+    .integration-card svg {
+        width: 20px;
+        height: 20px;
+        color: rgb(251 191 36);
+        margin-bottom: 15px;
+    }
+
+    .integration-card b {
+        display: block;
+        font-size: 13px;
+    }
+
+    .integration-card span {
+        display: block;
+        font-size: 11px;
+        color: rgb(100 116 139);
+        line-height: 1.6;
+        margin-top: 6px;
+    }
+
+    .support-box {
+        font-size: 11px;
+        font-weight: 600;
+        color: rgb(148 163 184);
+    }
+
+    .method-card {
+        position: relative;
+        padding: 25px 20px;
+        border: 1px solid rgb(30 41 59);
+        background: rgb(15 23 42);
+        border-radius: 18px;
+    }
+
+    .method-card > span {
+        position: absolute;
+        right: 18px;
+        top: 15px;
+        color: rgb(51 65 85);
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+    .method-card svg {
+        width: 22px;
+        color: rgb(56 189 248);
+        margin-bottom: 20px;
+    }
+
+    .method-card h3 {
+        font-weight: 800;
+        font-size: 15px;
+    }
+
+    .method-card p {
+        font-size: 11px;
+        color: rgb(100 116 139);
+        margin-top: 7px;
+        line-height: 1.6;
+    }
+
+    .industry-card {
+        padding: 25px 20px;
+        background: rgb(15 23 42);
+        border: 1px solid rgb(30 41 59);
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 12px;
+        font-weight: 700;
+        transition: .25s;
+    }
+
+    .industry-card:hover {
+        border-color: rgba(56,189,248,.3);
+        transform: translateY(-3px);
+    }
+
+    .industry-card svg {
+        width: 20px;
+        color: rgb(56 189 248);
+    }
+
+    .portfolio-card {
+        padding: 30px;
+        border-radius: 24px;
+        background: rgb(15 23 42);
+        border: 1px solid rgb(30 41 59);
+        transition: .3s;
+    }
+
+    .portfolio-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(56,189,248,.3);
+    }
+
+    .portfolio-card h3 {
+        font-size: 20px;
+        font-weight: 900;
+        margin-top: 10px;
+    }
+
+    .portfolio-card > p {
+        color: rgb(100 116 139);
+        font-size: 12px;
+        line-height: 1.8;
+        margin-top: 14px;
+    }
+
+    .portfolio-label {
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .12em;
+    }
+
+    .portfolio-label.sky {
+        color: rgb(56 189 248);
+    }
+
+    .portfolio-label.indigo {
+        color: rgb(129 140 248);
+    }
+
+    .portfolio-label.emerald {
+        color: rgb(52 211 153);
+    }
+
+    .portfolio-outcome {
+        margin-top: 22px;
+        padding: 14px;
+        background: rgb(2 6 23);
+        border-radius: 12px;
+        border: 1px solid rgb(30 41 59);
+    }
+
+    .portfolio-outcome b {
+        color: rgb(52 211 153);
+        font-size: 10px;
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+    }
+
+    .portfolio-outcome span {
+        display: block;
+        color: rgb(148 163 184);
+        font-size: 11px;
+        margin-top: 5px;
+        line-height: 1.6;
+    }
+
+    .stars {
+        color: rgb(251 191 36);
+        letter-spacing: 2px;
+        font-size: 13px;
+    }
+
+    .testimonial-card {
+        padding: 26px;
+        background: rgb(15 23 42);
+        border: 1px solid rgb(30 41 59);
+        border-radius: 20px;
+    }
+
+    .testimonial-card > p {
+        color: rgb(148 163 184);
+        font-size: 13px;
+        line-height: 1.8;
+        margin-top: 15px;
+        font-style: italic;
+    }
+
+    .testimonial-person {
+        margin-top: 24px;
+        padding-top: 17px;
+        border-top: 1px solid rgb(30 41 59);
+    }
+
+    .testimonial-person b {
+        display: block;
+        font-size: 12px;
+    }
+
+    .testimonial-person span {
+        display: block;
+        color: rgb(56 189 248);
+        font-size: 10px;
+        margin-top: 4px;
+    }
+
+    .engagement-card {
+        position: relative;
+        padding: 32px;
+        border: 1px solid rgb(30 41 59);
+        background: rgb(15 23 42);
+        border-radius: 24px;
+    }
+
+    .engagement-card.featured {
+        border-color: rgba(99,102,241,.35);
+    }
+
+    .engagement-card h3 {
+        font-size: 19px;
+        font-weight: 900;
+        margin-top: 20px;
+    }
+
+    .engagement-card p {
+        color: rgb(100 116 139);
+        font-size: 12px;
+        line-height: 1.8;
+        margin-top: 10px;
+    }
+
+    .engagement-card a {
+        display: inline-block;
+        color: rgb(56 189 248);
+        font-size: 11px;
+        font-weight: 800;
+        margin-top: 20px;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 8px;
+        color: rgb(203 213 225);
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+    }
+
+    .form-input {
+        width: 100%;
+        background: rgb(2 6 23);
+        border: 1px solid rgb(30 41 59);
+        border-radius: 11px;
+        padding: 12px 14px;
+        color: rgb(226 232 240);
+        font-size: 13px;
+        outline: none;
+        transition: .2s;
+    }
+
+    .form-input:focus {
+        border-color: rgb(14 165 233);
+        box-shadow: 0 0 0 3px rgba(14,165,233,.08);
+    }
+
+    .mobile-link {
+        color: rgb(203 213 225);
+    }
+
+    .mobile-link:hover {
+        color: rgb(56 189 248);
+    }
+
+</style>
+
+
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
+<script>
+
+    /* ---------------------------------------------
+       Lucide Icons
+    --------------------------------------------- */
+
+    lucide.createIcons();
+
+
+    /* ---------------------------------------------
+       Mobile Menu
+    --------------------------------------------- */
+
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+    });
+
+
+    /* ---------------------------------------------
+       Service Tabs
+    --------------------------------------------- */
+
+    const serviceTabs = document.querySelectorAll('.service-tab');
+    const servicePanels = document.querySelectorAll('.service-panel');
+
+    serviceTabs.forEach(tab => {
+
+        tab.addEventListener('click', () => {
+
+            const service = tab.dataset.service;
+
+            serviceTabs.forEach(item => {
+                item.classList.remove('tab-active');
+            });
+
+            tab.classList.add('tab-active');
+
+            servicePanels.forEach(panel => {
+                panel.classList.add('hidden');
+            });
+
+            document
+                .getElementById(`service-${service}`)
+                .classList.remove('hidden');
+
+            lucide.createIcons();
+
+        });
+
+    });
+
+
+    /* ---------------------------------------------
+       FAQ Accordion
+    --------------------------------------------- */
+
+    document.querySelectorAll('.faq-question').forEach(question => {
+
+        question.addEventListener('click', () => {
+
+            const item = question.closest('.faq-item');
+
+            document.querySelectorAll('.faq-item').forEach(other => {
+
+                if (other !== item) {
+                    other.classList.remove('open');
+                }
+
+            });
+
+            item.classList.toggle('open');
+
+        });
+
+    });
+
+
+    /* ---------------------------------------------
+       Scroll Reveal
+    --------------------------------------------- */
+
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add('visible');
+
+                    revealObserver.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
+
+
+    /* ---------------------------------------------
+       Animated Metrics
+    --------------------------------------------- */
+
+    const metricElements =
+        document.querySelectorAll('.metric-number');
+
+    let metricsStarted = false;
+
+    function animateMetrics() {
+
+        if (metricsStarted) return;
+
+        metricsStarted = true;
+
+        metricElements.forEach(element => {
+
+            const target =
+                parseInt(element.dataset.target);
+
+            let current = 0;
+
+            const duration = 1600;
+            const increment =
+                target / (duration / 20);
+
+            const timer = setInterval(() => {
+
+                current += increment;
+
+                if (current >= target) {
+
+                    current = target;
+
+                    clearInterval(timer);
+
+                }
+
+                element.textContent =
+                    Math.floor(current).toLocaleString() + '+';
+
+            }, 20);
+
+        });
+
+    }
+
+    const metricsSection =
+        document.querySelector('.metric-number');
+
+    const metricsObserver =
+        new IntersectionObserver(entries => {
+
+            if (entries[0].isIntersecting) {
+
+                animateMetrics();
+
+                metricsObserver.disconnect();
+
+            }
+
+        });
+
+    metricsObserver.observe(metricsSection);
+
+
+    /* ---------------------------------------------
+       Back To Top
+    --------------------------------------------- */
+
+    const backTop =
+        document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+
+        if (window.scrollY > 600) {
+
+            backTop.classList.remove('hidden');
+            backTop.classList.add('flex');
+
+        } else {
+
+            backTop.classList.add('hidden');
+            backTop.classList.remove('flex');
+
+        }
+
+    });
+
+    backTop.addEventListener('click', () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+    });
+
+
+    /* ---------------------------------------------
+       Proposal Form
+    --------------------------------------------- */
+
+    const form =
+        document.getElementById('proposal-form');
+
+    const formContainer =
+        document.getElementById('form-container');
+
+    const formSuccess =
+        document.getElementById('form-success');
+
+    form.addEventListener('submit', event => {
+
+        event.preventDefault();
+
+        formContainer.classList.add('hidden');
+
+        formSuccess.classList.remove('hidden');
+
+        lucide.createIcons();
+
+    });
+
+
+    /* ---------------------------------------------
+       Active Navigation Highlight
+    --------------------------------------------- */
+
+    const sections =
+        document.querySelectorAll('section[id]');
+
+    const navLinks =
+        document.querySelectorAll('header nav a');
+
+    const navObserver =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        navLinks.forEach(link => {
+
+                            link.classList.remove(
+                                'text-sky-400'
+                            );
+
+                        });
+
+                        const active =
+                            document.querySelector(
+                                `header nav a[href="#${entry.target.id}"]`
+                            );
+
+                        if (active) {
+                            active.classList.add(
+                                'text-sky-400'
+                            );
+                        }
+
+                    }
+
+                });
+
+            },
+
+            {
+                rootMargin: '-30% 0px -60% 0px'
+            }
+
+        );
+
+    sections.forEach(section => {
+        navObserver.observe(section);
+    });
+
+</script>
+
+</body>
+</html>
