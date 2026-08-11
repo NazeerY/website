@@ -144,6 +144,7 @@
             transition: transform .3s ease;
         }
 
+
         .metric-number {
             font-variant-numeric: tabular-nums;
         }
@@ -167,19 +168,11 @@
 
         <a href="#home" class="flex items-center gap-3">
 
-            <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600
-                        flex items-center justify-center font-black text-xl shadow-lg shadow-sky-500/20">
-                E
-            </div>
-
-            <div>
-                <span class="block text-lg font-bold tracking-tight">
-                    ENTHIRA
-                </span>
-
-                <span class="block text-[9px] text-sky-400 uppercase tracking-[.25em]">
-                    Engineering Services
-                </span>
+            <div class="flex items-center">
+                <img src="assets/enthira-logo.png"
+                     alt="Enthira Engineering Services"
+                     class="w-[145px] sm:w-[165px] h-auto object-contain"
+                     onerror="this.style.display='none';">
             </div>
 
         </a>
@@ -190,7 +183,7 @@
             <a href="#platforms" class="hover:text-sky-400 transition">Technology</a>
             <a href="#portfolio" class="hover:text-sky-400 transition">Projects</a>
             <a href="#industries" class="hover:text-sky-400 transition">Industries</a>
-            <a href="#testimonials" class="hover:text-sky-400 transition">Testimonials</a>
+<a href="#testimonials" class="hover:text-sky-400 transition">Testimonials</a>
             <a href="#faq" class="hover:text-sky-400 transition">FAQ</a>
 
         </nav>
@@ -499,7 +492,7 @@
 
             <div class="reveal">
                 <div class="metric-number text-4xl font-black text-indigo-400"
-                     data-target="1200">
+                     data-target="500">
                     0+
                 </div>
                 <p class="text-xs text-slate-400 uppercase tracking-wider mt-2">
@@ -509,7 +502,7 @@
 
             <div class="reveal">
                 <div class="metric-number text-4xl font-black text-emerald-400"
-                     data-target="150">
+                     data-target="70">
                     0+
                 </div>
                 <p class="text-xs text-slate-400 uppercase tracking-wider mt-2">
@@ -519,7 +512,7 @@
 
             <div class="reveal">
                 <div class="metric-number text-4xl font-black text-amber-400"
-                     data-target="30">
+                     data-target="7">
                     0+
                 </div>
                 <p class="text-xs text-slate-400 uppercase tracking-wider mt-2">
@@ -532,6 +525,7 @@
     </div>
 
 </section>
+
 
 
 <!-- ========================================================= -->
@@ -2187,7 +2181,7 @@
 
                     <div id="form-container">
 
-                        <form id="proposal-form" class="space-y-5">
+                        <form id="proposal-form" class="space-y-5" novalidate>
 
                             <div class="grid sm:grid-cols-2 gap-5">
 
@@ -2197,9 +2191,12 @@
                                     </label>
 
                                     <input required
+                                           id="fullName"
+                                           name="fullName"
                                            type="text"
                                            class="form-input"
-                                           placeholder="Your name">
+                                           placeholder="Your name"
+                                           autocomplete="name">
                                 </div>
 
                                 <div>
@@ -2208,9 +2205,13 @@
                                     </label>
 
                                     <input required
+                                           id="email"
+                                           name="email"
                                            type="email"
                                            class="form-input"
-                                           placeholder="name@company.com">
+                                           placeholder="name@company.com"
+                                           autocomplete="email"
+                                           inputmode="email">
                                 </div>
 
                             </div>
@@ -2224,8 +2225,11 @@
                                     </label>
 
                                     <input type="text"
+                                           id="organization"
+                                           name="organization"
                                            class="form-input"
-                                           placeholder="Company name">
+                                           placeholder="Company name"
+                                           autocomplete="organization">
                                 </div>
 
                                 <div>
@@ -2233,7 +2237,7 @@
                                         Your Role
                                     </label>
 
-                                    <select class="form-input">
+                                    <select id="role" name="role" class="form-input">
 
                                         <option>PLM Developer</option>
                                         <option>Engineer</option>
@@ -2258,7 +2262,7 @@
                                         Service Required
                                     </label>
 
-                                    <select class="form-input">
+                                    <select id="service" name="service" class="form-input">
 
                                         <option>PLM Developer Training</option>
                                         <option>Functional PLM Training</option>
@@ -2279,7 +2283,7 @@
                                         Primary Platform
                                     </label>
 
-                                    <select class="form-input">
+                                    <select id="platform" name="platform" class="form-input">
 
                                         <option>3DEXPERIENCE / ENOVIA</option>
                                         <option>Teamcenter</option>
@@ -2305,12 +2309,20 @@
                                 </label>
 
                                 <textarea required
+                                          id="scope"
+                                          name="scope"
                                           rows="5"
                                           class="form-input resize-none"
                                           placeholder="Tell us about your current platform, number of users, project objectives, training requirements, integration scope or challenges..."></textarea>
 
                             </div>
 
+
+                            <!-- Anti-spam honeypot: real users should leave this empty. -->
+                            <div class="hidden" aria-hidden="true">
+                                <label for="website">Website</label>
+                                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
 
                             <button type="submit"
                                     class="w-full py-4 rounded-xl
@@ -2322,6 +2334,11 @@
                                 Request Custom Proposal
 
                             </button>
+
+                            <p id="form-status"
+                               class="hidden text-xs text-center"
+                               role="status"
+                               aria-live="polite"></p>
 
                             <p class="text-[10px] text-center text-slate-600">
                                 Your information will be used only to respond
@@ -2388,22 +2405,11 @@
 
                 <div class="flex items-center gap-3">
 
-                    <div class="w-10 h-10 rounded-xl
-                                bg-gradient-to-tr from-sky-500 to-indigo-600
-                                flex items-center justify-center
-                                font-black">
-                        E
-                    </div>
-
-                    <div>
-                        <b class="block">
-                            ENTHIRA
-                        </b>
-
-                        <span class="text-[9px] text-sky-400
-                                     tracking-[.25em] uppercase">
-                            Engineering Services
-                        </span>
+                    <div class="flex items-center">
+                        <img src="assets/enthira-logo.png"
+                             alt="Enthira Engineering Services"
+                             class="w-[180px] h-auto object-contain"
+                             onerror="this.style.display='none';">
                     </div>
 
                 </div>
@@ -3152,16 +3158,77 @@
     const formSuccess =
         document.getElementById('form-success');
 
-    form.addEventListener('submit', event => {
-
+    form.addEventListener('submit', async event => {
         event.preventDefault();
 
-        formContainer.classList.add('hidden');
+        const status = document.getElementById('form-status');
+        const submitButton = form.querySelector('button[type="submit"]');
+        const emailInput = document.getElementById('email');
+        const email = emailInput.value.trim();
 
-        formSuccess.classList.remove('hidden');
+        // Browser validation + stricter email-format validation.
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
 
-        lucide.createIcons();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        if (!emailPattern.test(email)) {
+            emailInput.setCustomValidity('Please enter a valid email address.');
+            emailInput.reportValidity();
+            emailInput.setCustomValidity('');
+            return;
+        }
 
+        // Honeypot anti-spam check.
+        if (document.getElementById('website').value.trim() !== '') {
+            return;
+        }
+
+        const payload = {
+            fullName: document.getElementById('fullName').value.trim(),
+            email,
+            organization: document.getElementById('organization').value.trim(),
+            role: document.getElementById('role').value,
+            service: document.getElementById('service').value,
+            platform: document.getElementById('platform').value,
+            scope: document.getElementById('scope').value.trim(),
+            website: document.getElementById('website').value
+        };
+
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending Request...';
+        status.className = 'text-xs text-center text-slate-400';
+        status.textContent = 'Submitting your proposal request...';
+
+        try {
+            const response = await fetch('/api/proposal', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                throw new Error(result.message || 'Unable to send your request.');
+            }
+
+            formContainer.classList.add('hidden');
+            formSuccess.classList.remove('hidden');
+            lucide.createIcons();
+
+        } catch (error) {
+            status.className = 'text-xs text-center text-red-400';
+            status.textContent =
+                error.message ||
+                'Something went wrong. Please try again or contact us directly.';
+            submitButton.disabled = false;
+            submitButton.textContent = 'Request Custom Proposal';
+        }
     });
 
 
