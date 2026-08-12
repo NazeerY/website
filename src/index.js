@@ -119,7 +119,7 @@ async function handleProposal(request, env) {
         {
           ok: false,
           message:
-            "We could not send your request. Please try again."
+            resendData?.message || "Resend rejected the email request."
         },
         { status: 502 }
       );
