@@ -1,7 +1,7 @@
 /**
- * Cloudflare Pages Function: POST /api/proposal
+ * Netlify Function: POST /api/proposal
  *
- * Required environment variable:
+ * Environment variable required:
  *   RESEND_API_KEY
  *
  * Optional:
@@ -18,9 +18,19 @@ function clean(value, maxLength = 5000) {
   return String(value ?? "").trim().slice(0, maxLength);
 }
 
-export async function onRequestPost(context) {
+export default async function proposal(request) {
   try {
-    const body = await context.request.json();
+    if (request.method !== "POST") {
+      return Response.json(
+        {
+          ok: false,
+          message: "Method not allowed."
+        },
+        { status: 405 }
+      );
+    }
+
+    const body = await request.json();
 
     // Anti-spam honeypot.
     if (clean(body.website, 200)) {
@@ -37,28 +47,41 @@ export async function onRequestPost(context) {
 
     if (!fullName || !email || !scope) {
       return Response.json(
-        { ok: false, message: "Please complete all required fields." },
+        {
+          ok: false,
+          message: "Please complete all required fields."
+        },
         { status: 400 }
       );
     }
 
     if (!isValidEmail(email)) {
       return Response.json(
-        { ok: false, message: "Please enter a valid email address." },
+        {
+          ok: false,
+          message: "Please enter a valid email address."
+        },
         { status: 400 }
       );
     }
 
-    if (!context.env.RESEND_API_KEY) {
+    const resendApiKey = process.env.RESEND_API_KEY;
+
+    if (!resendApiKey) {
       console.error("RESEND_API_KEY is not configured.");
+
       return Response.json(
-        { ok: false, message: "Email service is not configured yet." },
+        {
+          ok: false,
+          message: "Email service is not configured yet."
+        },
         { status: 500 }
       );
     }
 
     const fromEmail =
-      context.env.FROM_EMAIL || "Enthira Website <noreply@enthira.co.in>";
+      process.env.FROM_EMAIL ||
+      "Enthira Website <noreply@enthira.co.in>";
 
     const subject =
       `New Proposal Request - ${fullName}` +
@@ -78,37 +101,64 @@ export async function onRequestPost(context) {
       scope
     ].join("\n");
 
-    const resendResponse = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${context.env.RESEND_API_KEY}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        from: fromEmail,
-        to: [TO_EMAIL],
-        reply_to: email,
-        subject,
-        text
-      })
-    });
+    const resendResponse = await fetch(
+      "https://api.resend.com/emails",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${resendApiKey}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          from: fromEmail,
+          to: [TO_EMAIL],
+          reply_to: email,
+          subject,
+          text
+        })
+      }
+    );
 
-    const resendData = await resendResponse.json().catch(() => ({}));
+    const resendData =
+      await resendResponse.json().catch(() => ({}));
 
     if (!resendResponse.ok) {
       console.error("Resend error:", resendData);
+
       return Response.json(
-        { ok: false, message: "We could not send your request. Please try again." },
+        {
+          ok: false,
+          message:
+            resendData?.message ||
+            "We could not send your request. Please try again."
+        },
         { status: 502 }
       );
     }
 
     return Response.json({ ok: true });
+
   } catch (error) {
     console.error("Proposal API error:", error);
+
     return Response.json(
-      { ok: false, message: "Unable to process your request right now." },
+      {
+        ok: false,
+        message: "Unable to process your request right now."
+      },
       { status: 500 }
     );
   }
 }
+
+/*
+ * Expose the Netlify Function directly as:
+ *
+ * POST /api/proposal
+ *
+ * This means index.html does NOT need to be changed.
+ */
+export const config = {
+  path: "/api/proposal",
+  method: ["POST"]
+};
